@@ -1,0 +1,12 @@
+/*/build/
+build/
+*.iml
+.gradle
+/local.properties
+/.idea/libraries
+.idea/*.xml
+.idea/copyright/
+.idea/dictionaries/
+.idea/.name
+.DS_Store
+/captures
