@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:tools="http://schemas.android.com/tools"
+             android:orientation="vertical"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+    >
+
+  <ImageView
+      android:id="@+id/ad_image"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:src="@drawable/ic_cast_grey"
+      android:contentDescription="@string/presentation_detail_description_title"
+      />
+
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_gravity="bottom|start"
+      android:padding="36dp"
+      android:background="@drawable/ad_text_bg_gradient"
+      android:orientation="vertical"
+      >
+
+    <TextView
+        android:id="@+id/ad_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="start"
+        android:shadowColor="#7F000000"
+        android:shadowDx="1"
+        android:shadowDy="1"
+        android:shadowRadius="8"
+        android:textColor="#FFFFFF"
+        android:textSize="34sp"
+        tools:text="@string/ad_title_placeholder"
+        />
+
+    <TextView
+        android:id="@+id/ad_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="start"
+        android:shadowColor="#7F000000"
+        android:shadowDx="1"
+        android:shadowDy="1"
+        android:shadowRadius="8"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        android:textColor="#92be1f"
+        tools:text="@string/ad_price_placeholder"
+        />
+  </LinearLayout>
+</FrameLayout>

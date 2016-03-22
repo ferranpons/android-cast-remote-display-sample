@@ -1,0 +1,10 @@
+<resources>
+  <string name="app_name">Remote Display Sample</string>
+  <string name="app_cast_id"></string>
+  <string name="cast">Cast Remote Display</string>
+  <string name="cast_connected_to">Connected to</string>
+  <string name="toast_connection_error">There is a connection error, please try again</string>
+  <string name="presentation_detail_description_title">Ad Image</string>
+  <string name="ad_title_placeholder">Lorem ipsum dolor sit amet, consectetur adipiscing elit</string>
+  <string name="ad_price_placeholder">$4.000</string>
+</resources>
