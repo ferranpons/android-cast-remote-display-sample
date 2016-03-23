@@ -19,7 +19,7 @@ In the article we would like to show you how to implement Google Cast via Remote
 About
 -----
 
-<img src="http://www.schibsted.es/wp-content/uploads/2014/12/Schibsted-Spain.png" align="left" width="168px" height="40px"/>
+<img src="http://www.schibsted.es/wp-content/uploads/2014/12/Schibsted-Spain.png" align="left" width="106px" height="40px"/>
 <img align="left" width="0" height="106px" hspace="10"/>
 
 
