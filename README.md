@@ -2,7 +2,7 @@ Remote Display Sample for Android
 =================
 
 <img src="media/example_screen_video.gif" align="left" />
-<img align="left" width="0" height="168px" hspace="10"/>
+<img align="left" width="0" height="328px" hspace="10"/>
 
 *Google Cast's Remote Display Sample for Android*
 
@@ -10,21 +10,16 @@ Remote Display Sample for Android
 This sample shows how to use the new Google Cast feature called Remote Display. Your sender app can now render directly to any Cast receiver, like a Chromecast. 
 The remote display on the receiver can present information that is entirely different than the information presented in the display on the sender device.
 
+This project is part of an article from the Schibsted Spain tech blog.
 
-<br/>
-<p align="center">
-<b><a href="#about">About</a></b>
-|
-<b><a href="#who-made-this">Who made this</a></b>
-</p>
-<br/>
+
 
 About
 -----
 
 <img src="http://www.schibsted.es/wp-content/uploads/2014/12/Schibsted-Spain.png" align="left" width="168px" height="40px"/>
 <img align="left" width="0" height="168px" hspace="10"/>
-This project is part of an article from the Schibsted Spain tech blog.
+
 
 Schibsted Media Group is an international media group with 6800 employees in 30 countries. Our strategy to become a global leader within our fields is bold. It consists of three elements that work seamlessly together: Classifieds, Growth and Media houses.
 
