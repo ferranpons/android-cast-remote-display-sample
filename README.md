@@ -10,7 +10,9 @@ Remote Display Sample for Android
 This sample shows how to use the new Google Cast feature called Remote Display. Your sender app can now render directly to any Cast receiver, like a Chromecast. 
 The remote display on the receiver can present information that is entirely different than the information presented in the display on the sender device.
 
-This project is part of an article from the Schibsted Spain tech blog.
+This project is part of an article from the <a href="http://tech.schibsted.es/">Schibsted Spain tech blog</a>.
+
+In the article we would like to show you how to implement Google Cast via Remote Display in your applications and allow your users enjoy this kind of content sharing and improve their experience. Implementing the remote display APIs follows the pattern for implementing a Presentation in Android. Currently, we only cast our ad detail pages, showing images full screen and the title of ad and the price.
 
 
 
