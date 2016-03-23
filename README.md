@@ -1,7 +1,7 @@
 Remote Display Sample for Android
 =================
 
-<img src="http://www.schibsted.es/wp-content/uploads/2014/12/Schibsted-Spain.png" align="left" width="168px" height="40px"/>
+<img src="media/example_screen_video.gif" align="left" />
 <img align="left" width="0" height="168px" hspace="10"/>
 
 *Google Cast's Remote Display Sample for Android*
@@ -22,9 +22,13 @@ The remote display on the receiver can present information that is entirely diff
 About
 -----
 
+<img src="http://www.schibsted.es/wp-content/uploads/2014/12/Schibsted-Spain.png" align="left" width="168px" height="40px"/>
+<img align="left" width="0" height="168px" hspace="10"/>
+This project is part of an article from the Schibsted Spain tech blog.
 
+Schibsted Media Group is an international media group with 6800 employees in 30 countries. Our strategy to become a global leader within our fields is bold. It consists of three elements that work seamlessly together: Classifieds, Growth and Media houses.
 
-
+We aim to be a global leader in online marketplaces and offer the best solutions and services for our users.We invest in great entrepreneurs and help scale their businesses locally and internationally by leveraging the Schibsted ecosystem.We are building world class digital Media houses that will shape the media landscape for years to come.
 
 
 
