@@ -19,8 +19,8 @@ In the article we would like to show you how to implement Google Cast via Remote
 About
 -----
 
-<img src="http://www.schibsted.es/wp-content/uploads/2014/12/Schibsted-Spain.png" align="left" width="106px" height="40px"/>
-<img align="left" width="0" height="106px" hspace="10"/>
+<img src="http://www.schibsted.es/wp-content/uploads/2014/12/Schibsted-Spain.png" align="left" width="168px" height="40px"/>
+<img align="left" width="0" height="45px" hspace="10"/>
 
 
 Schibsted Media Group is an international media group with 6800 employees in 30 countries. Our strategy to become a global leader within our fields is bold. It consists of three elements that work seamlessly together: Classifieds, Growth and Media houses.
