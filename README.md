@@ -20,7 +20,7 @@ About
 -----
 
 <img src="http://www.schibsted.es/wp-content/uploads/2014/12/Schibsted-Spain.png" align="left" width="168px" height="40px"/>
-<img align="left" width="0" height="168px" hspace="10"/>
+<img align="left" width="0" height="106px" hspace="10"/>
 
 
 Schibsted Media Group is an international media group with 6800 employees in 30 countries. Our strategy to become a global leader within our fields is bold. It consists of three elements that work seamlessly together: Classifieds, Growth and Media houses.
