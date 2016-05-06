@@ -54,40 +54,6 @@ public class MainActivity extends AppCompatActivity implements CustomSimpleOnPag
     setupMediaRouter();
   }
 
-  @NonNull
-  private List<AdViewModel> getAdViewModels() {
-    AdViewModel adViewModel1 = new AdViewModel("0", "Solid Strike", "$3.333",
-        "https://coresites-cdn.factorymedia.com/dirt_new/wp-content/uploads/2015/06/solid-strike.jpg");
-    AdViewModel adViewModel2 = new AdViewModel("1", "YT Industries Tues", "$2.799",
-        "https://coresites-cdn.factorymedia.com/dirt_new/wp-content/uploads/2015/06/yt-tues.jpg");
-    AdViewModel adViewModel3 = new AdViewModel("2", "Transition TR450", "$3.750",
-        "https://descensonuevoleon.files.wordpress.com/2009/08/tr450_weblarge3.jpg");
-    AdViewModel adViewModel4 = new AdViewModel("3", "Lapierre DH", "$5.199",
-        "https://coresites-cdn.factorymedia.com/dirt_new/wp-content/uploads/2015/06/lapierre-dh.jpg");
-    AdViewModel adViewModel5 = new AdViewModel("4", "Specialized Demo", "$7.000",
-        "https://coresites-cdn.factorymedia.com/dirt_new/wp-content/uploads/2015/06/specialized-demo.jpg");
-    AdViewModel adViewModel6 = new AdViewModel("5", "Trek Session 9.9", "$7.000",
-        "https://coresites-cdn.factorymedia.com/dirt_new/wp-content/uploads/2015/06/Trek-session-9.9.jpg");
-    AdViewModel adViewModel7 = new AdViewModel("6", "Mondraker Summum Pro Team", "$5.799",
-        "https://coresites-cdn.factorymedia.com/dirt_new/wp-content/uploads/2015/06/mondraker-summum-pro-team.jpg");
-    AdViewModel adViewModel8 = new AdViewModel("7", "Intense 951 EVO", "$5.499",
-        "https://coresites-cdn.factorymedia.com/dirt_new/wp-content/uploads/2015/06/intense-951-evo.jpg");
-    AdViewModel adViewModel9 = new AdViewModel("8", "Giant Glory", "$4.749",
-        "https://coresites-cdn.factorymedia.com/dirt_new/wp-content/uploads/2015/06/giant-glory.jpg");
-
-    List<AdViewModel> list = new ArrayList<>();
-    list.add(adViewModel1);
-    list.add(adViewModel2);
-    list.add(adViewModel3);
-    list.add(adViewModel4);
-    list.add(adViewModel5);
-    list.add(adViewModel6);
-    list.add(adViewModel7);
-    list.add(adViewModel8);
-    list.add(adViewModel9);
-    return list;
-  }
-
   @Override
   protected void onResume() {
     super.onResume();
@@ -213,6 +179,40 @@ public class MainActivity extends AppCompatActivity implements CustomSimpleOnPag
       ((PresentationService) CastRemoteDisplayLocalService.getInstance()).setAdViewModel(
           fragmentStatePagerAdapter.getAdAt(position));
     }
+  }
+
+  @NonNull
+  private List<AdViewModel> getAdViewModels() {
+    AdViewModel adViewModel1 = new AdViewModel("0", "Solid Strike", "$3.333",
+        "https://coresites-cdn.factorymedia.com/dirt_new/wp-content/uploads/2015/06/solid-strike.jpg");
+    AdViewModel adViewModel2 = new AdViewModel("1", "YT Industries Tues", "$2.799",
+        "https://coresites-cdn.factorymedia.com/dirt_new/wp-content/uploads/2015/06/yt-tues.jpg");
+    AdViewModel adViewModel3 = new AdViewModel("2", "Transition TR450", "$3.750",
+        "https://descensonuevoleon.files.wordpress.com/2009/08/tr450_weblarge3.jpg");
+    AdViewModel adViewModel4 = new AdViewModel("3", "Lapierre DH", "$5.199",
+        "https://coresites-cdn.factorymedia.com/dirt_new/wp-content/uploads/2015/06/lapierre-dh.jpg");
+    AdViewModel adViewModel5 = new AdViewModel("4", "Specialized Demo", "$7.000",
+        "https://coresites-cdn.factorymedia.com/dirt_new/wp-content/uploads/2015/06/specialized-demo.jpg");
+    AdViewModel adViewModel6 = new AdViewModel("5", "Trek Session 9.9", "$7.000",
+        "https://coresites-cdn.factorymedia.com/dirt_new/wp-content/uploads/2015/06/Trek-session-9.9.jpg");
+    AdViewModel adViewModel7 = new AdViewModel("6", "Mondraker Summum Pro Team", "$5.799",
+        "https://coresites-cdn.factorymedia.com/dirt_new/wp-content/uploads/2015/06/mondraker-summum-pro-team.jpg");
+    AdViewModel adViewModel8 = new AdViewModel("7", "Intense 951 EVO", "$5.499",
+        "https://coresites-cdn.factorymedia.com/dirt_new/wp-content/uploads/2015/06/intense-951-evo.jpg");
+    AdViewModel adViewModel9 = new AdViewModel("8", "Giant Glory", "$4.749",
+        "https://coresites-cdn.factorymedia.com/dirt_new/wp-content/uploads/2015/06/giant-glory.jpg");
+
+    List<AdViewModel> list = new ArrayList<>();
+    list.add(adViewModel1);
+    list.add(adViewModel2);
+    list.add(adViewModel3);
+    list.add(adViewModel4);
+    list.add(adViewModel5);
+    list.add(adViewModel6);
+    list.add(adViewModel7);
+    list.add(adViewModel8);
+    list.add(adViewModel9);
+    return list;
   }
 
   private class ScreenSlidePagerAdapter extends FragmentStatePagerAdapter {

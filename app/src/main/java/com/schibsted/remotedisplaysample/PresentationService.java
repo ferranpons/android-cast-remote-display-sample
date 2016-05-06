@@ -18,7 +18,14 @@ public class PresentationService extends CastRemoteDisplayLocalService {
 
   @Override
   public void onCreatePresentation(Display display) {
-    createPresentation(display);
+    dismissPresentation();
+    castPresentation = new DetailPresentation(this, display);
+
+    try {
+      castPresentation.show();
+    } catch (WindowManager.InvalidDisplayException ex) {
+      dismissPresentation();
+    }
   }
 
   @Override
@@ -31,17 +38,6 @@ public class PresentationService extends CastRemoteDisplayLocalService {
     if (castPresentation != null) {
       castPresentation.dismiss();
       castPresentation = null;
-    }
-  }
-
-  private void createPresentation(Display display) {
-    dismissPresentation();
-    castPresentation = new DetailPresentation(this, display);
-
-    try {
-      castPresentation.show();
-    } catch (WindowManager.InvalidDisplayException ex) {
-      dismissPresentation();
     }
   }
 

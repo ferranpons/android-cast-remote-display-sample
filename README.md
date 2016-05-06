@@ -15,6 +15,13 @@ This project is part of an article from the <a href="http://tech.schibsted.es/">
 In the article we would like to show you how to implement Google Cast via Remote Display in your applications and allow your users enjoy this kind of content sharing and improve their experience. Implementing the remote display APIs follows the pattern for implementing a Presentation in Android. Currently, we only cast our ad detail pages, showing images full screen and the title of ad and the price.
 
 
+Abstract
+--------
+
+At [*Vibbo*](http://www.vibbo.com) we try to find new ways to engage users and facilitate the way they share their content, so we thought that it would be cool to allow user to share the ads that they found via Tv or other screen. This makes that couples, friends and family could discuss if they like or not these products without needing to pass their devices to each-other in a simple way. To make this possible we thought that Cast-enabled devices like [*Google Chromecast*](http://www.google.com/chromecast) would be a good choice and that's why we implemented Google Cast into our Android application. Currently, we only cast our ad detail pages, showing images full screen and the title of ad and the price.
+
+[continue reading...](http://tech.schibsted.es/)
+
 
 About
 -----
