@@ -41,7 +41,7 @@ Who made this
 
 <a href="https://www.ferranpons.com"><img src="https://avatars0.githubusercontent.com/u/8902144?s=400" alt="Ferran Pons" align="left" height="100" width="100" /></a>
 
-Hi! I'm <a href="https://www.ferranpons.com">Ferran Pons</a>; a Senior Android Developer that works for Schibsted Spain developing the Vibbo application. 
+Hi! I'm <a href="http://www.ferranpons.com">Ferran Pons</a>; a Senior Android Developer that works for Schibsted Spain developing the Vibbo application. 
 With almost 12 years of experience as a programmer, my experience covers a lot of different kind of applications, from web app development to the desktop, mobile apps and videogames. I've participated in some blockbuster games such as Burnout Paradise, DeadSpace and the Skate franchise. Also I've tried to start up my own indie videogame studio, labeled "Retrowax Games" with which I've made a game called Zombusters that it's published for the Xbox360 and Windows Phone and PC.
  
 <a href="https://www.linkedin.com/in/ferranpons"><img src="http://icons.iconarchive.com/icons/sicons/basic-round-social/128/linkedin-icon.png" width="25px" height="25px" /></a>
