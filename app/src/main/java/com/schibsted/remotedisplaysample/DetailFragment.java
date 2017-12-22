@@ -1,15 +1,19 @@
 package com.schibsted.remotedisplaysample;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.Unbinder;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 
 public class DetailFragment extends Fragment {
   private static final String ARG_ID = "id";
@@ -18,9 +22,11 @@ public class DetailFragment extends Fragment {
   private static final String ARG_IMAGE = "image";
   private AdViewModel adViewModel;
 
-  @Bind(R.id.ad_title) TextView title;
-  @Bind(R.id.ad_price) TextView price;
-  @Bind(R.id.ad_image) ImageView image;
+  @BindView(R.id.ad_title) TextView title;
+  @BindView(R.id.ad_price) TextView price;
+  @BindView(R.id.ad_image) ImageView image;
+
+  private Unbinder unbinder;
 
   public static DetailFragment newInstance(AdViewModel ad) {
     DetailFragment fragment = new DetailFragment();
@@ -41,27 +47,36 @@ public class DetailFragment extends Fragment {
   }
 
   @Override
-  public View onCreateView(LayoutInflater inflater, ViewGroup container,
+  public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
       Bundle savedInstanceState) {
     View fragmentView = inflater.inflate(R.layout.fragment_detail, container, false);
-    ButterKnife.bind(this, fragmentView);
-    title.setText(adViewModel.getTitle());
-    price.setText(adViewModel.getPrice());
+    unbinder = ButterKnife.bind(this, fragmentView);
+    title = ButterKnife.findById(fragmentView, R.id.ad_title);
+    price = ButterKnife.findById(fragmentView, R.id.ad_price);
+    image = ButterKnife.findById(fragmentView, R.id.ad_image);
+    return fragmentView;
+  }
+
+  @Override
+  public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+    super.onViewCreated(view, savedInstanceState);
+
+    title.setText(adViewModel.getTitle() != null ? adViewModel.getTitle() : "");
+    price.setText(adViewModel.getPrice() != null ? adViewModel.getPrice() : "");
     if (!adViewModel.getImage().isEmpty()) {
+      RequestOptions options = new RequestOptions();
+      options.centerCrop();
       Glide.with(this)
           .load(adViewModel.getImage())
-          .centerCrop()
-          .placeholder(R.drawable.ic_cast_grey)
-          .crossFade()
+          .apply(options)
           .into(image);
     }
-    return fragmentView;
   }
 
   @Override
   public void onDestroyView() {
     super.onDestroyView();
-    ButterKnife.unbind(this);
+    unbinder.unbind();
   }
 
   private void getViewArguments() {

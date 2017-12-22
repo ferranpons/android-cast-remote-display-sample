@@ -1,13 +1,13 @@
 apply plugin: 'com.android.application'
 
 android {
-  compileSdkVersion 23
-  buildToolsVersion "23.0.2"
+  compileSdkVersion 27
+  buildToolsVersion "27.0.2"
 
   defaultConfig {
     applicationId "com.schibsted.remotedisplaysample"
     minSdkVersion 19
-    targetSdkVersion 23
+    targetSdkVersion 27
     versionCode 1
     versionName "1.0"
   }
@@ -21,11 +21,14 @@ android {
 
 dependencies {
   compile fileTree(dir: 'libs', include: ['*.jar'])
+
+  def supportVersion = '27.0.2'
+  compile "com.android.support:support-v4:$supportVersion"
+  compile "com.android.support:appcompat-v7:$supportVersion"
+  compile "com.android.support:mediarouter-v7:$supportVersion"
+  compile 'com.google.android.gms:play-services-cast:11.6.2'
+  compile 'com.jakewharton:butterknife:8.8.1'
+  compile 'com.github.bumptech.glide:glide:4.1.1'
+
   testCompile 'junit:junit:4.12'
-  compile 'com.android.support:support-v4:23.1.1'
-  compile 'com.android.support:appcompat-v7:23.1.1'
-  compile 'com.android.support:mediarouter-v7:23.1.1'
-  compile 'com.google.android.gms:play-services-cast:8.4.0'
-  compile 'com.jakewharton:butterknife:7.0.1'
-  compile 'com.github.bumptech.glide:glide:3.7.0'
 }
