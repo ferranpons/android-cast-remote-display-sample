@@ -10,7 +10,7 @@
       android:id="@+id/ad_image"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
-      android:src="@drawable/ic_cast_grey"
+      android:src="@drawable/ic_dialog_close_dark"
       android:contentDescription="@string/presentation_detail_description_title"
       />
 

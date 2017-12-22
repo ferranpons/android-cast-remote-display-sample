@@ -6,7 +6,7 @@ import android.view.Display;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.bumptech.glide.Glide;
 import com.google.android.gms.cast.CastPresentation;
@@ -49,9 +49,9 @@ public class PresentationService extends CastRemoteDisplayLocalService {
   }
 
   public class DetailPresentation extends CastPresentation {
-    @Bind(R.id.ad_title) public TextView title;
-    @Bind(R.id.ad_price) public TextView price;
-    @Bind(R.id.ad_image) public ImageView image;
+    @BindView(R.id.ad_title) public TextView title;
+    @BindView(R.id.ad_price) public TextView price;
+    @BindView(R.id.ad_image) public ImageView image;
 
     public DetailPresentation(Context context, Display display) {
       super(context, display);
@@ -71,9 +71,6 @@ public class PresentationService extends CastRemoteDisplayLocalService {
       if (!adViewModel.getImage().isEmpty()) {
         Glide.with(getContext())
             .load(adViewModel.getImage())
-            .centerCrop()
-            .placeholder(R.drawable.ic_cast_grey)
-            .crossFade()
             .into(image);
       }
     }
@@ -81,7 +78,6 @@ public class PresentationService extends CastRemoteDisplayLocalService {
     @Override
     public void onDetachedFromWindow() {
       super.onDetachedFromWindow();
-      ButterKnife.unbind(this);
     }
   }
 }

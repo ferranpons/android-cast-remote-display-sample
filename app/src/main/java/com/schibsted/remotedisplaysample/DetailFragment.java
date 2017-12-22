@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.bumptech.glide.Glide;
 
@@ -18,9 +18,9 @@ public class DetailFragment extends Fragment {
   private static final String ARG_IMAGE = "image";
   private AdViewModel adViewModel;
 
-  @Bind(R.id.ad_title) TextView title;
-  @Bind(R.id.ad_price) TextView price;
-  @Bind(R.id.ad_image) ImageView image;
+  @BindView(R.id.ad_title) TextView title;
+  @BindView(R.id.ad_price) TextView price;
+  @BindView(R.id.ad_image) ImageView image;
 
   public static DetailFragment newInstance(AdViewModel ad) {
     DetailFragment fragment = new DetailFragment();
@@ -45,14 +45,15 @@ public class DetailFragment extends Fragment {
       Bundle savedInstanceState) {
     View fragmentView = inflater.inflate(R.layout.fragment_detail, container, false);
     ButterKnife.bind(this, fragmentView);
-    title.setText(adViewModel.getTitle());
-    price.setText(adViewModel.getPrice());
-    if (!adViewModel.getImage().isEmpty()) {
+    if (title != null) {
+      title.setText(adViewModel.getTitle() != null ? adViewModel.getTitle() : "");
+    }
+    if (price != null) {
+      price.setText(adViewModel.getPrice() != null ? adViewModel.getPrice() : "");
+    }
+    if (!adViewModel.getImage().isEmpty() && image != null) {
       Glide.with(this)
           .load(adViewModel.getImage())
-          .centerCrop()
-          .placeholder(R.drawable.ic_cast_grey)
-          .crossFade()
           .into(image);
     }
     return fragmentView;
@@ -61,7 +62,6 @@ public class DetailFragment extends Fragment {
   @Override
   public void onDestroyView() {
     super.onDestroyView();
-    ButterKnife.unbind(this);
   }
 
   private void getViewArguments() {

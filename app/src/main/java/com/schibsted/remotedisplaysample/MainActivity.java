@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity implements CustomSimpleOnPag
       viewPager.addOnPageChangeListener(customSimpleOnPageChangeListener);
     }
 
-    setupMediaRouter();
+    //setupMediaRouter();
   }
 
   @Override
