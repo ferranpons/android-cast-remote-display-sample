@@ -1,6 +1,8 @@
 package com.schibsted.remotedisplaysample;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.Unbinder;
 import com.bumptech.glide.Glide;
 
 public class DetailFragment extends Fragment {
@@ -21,6 +24,8 @@ public class DetailFragment extends Fragment {
   @BindView(R.id.ad_title) TextView title;
   @BindView(R.id.ad_price) TextView price;
   @BindView(R.id.ad_image) ImageView image;
+
+  private Unbinder unbinder;
 
   public static DetailFragment newInstance(AdViewModel ad) {
     DetailFragment fragment = new DetailFragment();
@@ -41,27 +46,33 @@ public class DetailFragment extends Fragment {
   }
 
   @Override
-  public View onCreateView(LayoutInflater inflater, ViewGroup container,
+  public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
       Bundle savedInstanceState) {
     View fragmentView = inflater.inflate(R.layout.fragment_detail, container, false);
-    ButterKnife.bind(this, fragmentView);
-    if (title != null) {
-      title.setText(adViewModel.getTitle() != null ? adViewModel.getTitle() : "");
-    }
-    if (price != null) {
-      price.setText(adViewModel.getPrice() != null ? adViewModel.getPrice() : "");
-    }
-    if (!adViewModel.getImage().isEmpty() && image != null) {
+    unbinder = ButterKnife.bind(this, fragmentView);
+    title = ButterKnife.findById(fragmentView, R.id.ad_title);
+    price = ButterKnife.findById(fragmentView, R.id.ad_price);
+    image = ButterKnife.findById(fragmentView, R.id.ad_image);
+    return fragmentView;
+  }
+
+  @Override
+  public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+    super.onViewCreated(view, savedInstanceState);
+
+    title.setText(adViewModel.getTitle() != null ? adViewModel.getTitle() : "");
+    price.setText(adViewModel.getPrice() != null ? adViewModel.getPrice() : "");
+    if (!adViewModel.getImage().isEmpty()) {
       Glide.with(this)
           .load(adViewModel.getImage())
           .into(image);
     }
-    return fragmentView;
   }
 
   @Override
   public void onDestroyView() {
     super.onDestroyView();
+    unbinder.unbind();
   }
 
   private void getViewArguments() {
