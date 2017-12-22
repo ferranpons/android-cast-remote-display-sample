@@ -13,6 +13,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 
 public class DetailFragment extends Fragment {
   private static final String ARG_ID = "id";
@@ -63,8 +64,11 @@ public class DetailFragment extends Fragment {
     title.setText(adViewModel.getTitle() != null ? adViewModel.getTitle() : "");
     price.setText(adViewModel.getPrice() != null ? adViewModel.getPrice() : "");
     if (!adViewModel.getImage().isEmpty()) {
+      RequestOptions options = new RequestOptions();
+      options.centerCrop();
       Glide.with(this)
           .load(adViewModel.getImage())
+          .apply(options)
           .into(image);
     }
   }

@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity implements CustomSimpleOnPag
 
     List<AdViewModel> list = getAdViewModels();
 
-    ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
+    ViewPager viewPager = findViewById(R.id.pager);
     fragmentStatePagerAdapter =
         new ScreenSlidePagerAdapter(getSupportFragmentManager());
     fragmentStatePagerAdapter.addAds(list);
@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity implements CustomSimpleOnPag
       viewPager.addOnPageChangeListener(customSimpleOnPageChangeListener);
     }
 
-    //setupMediaRouter();
+    setupMediaRouter();
   }
 
   @Override
@@ -77,7 +77,7 @@ public class MainActivity extends AppCompatActivity implements CustomSimpleOnPag
     MenuInflater inflater = getMenuInflater();
     inflater.inflate(R.menu.activity_main_actions, menu);
 
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1 && mediaRouteSelector != null) {
+    if (mediaRouteSelector != null) {
       MenuItem mediaRouteMenuItem = menu.findItem(R.id.action_cast);
       if (MenuItemCompat.getActionProvider(
           mediaRouteMenuItem) instanceof MediaRouteActionProvider) {
@@ -90,22 +90,20 @@ public class MainActivity extends AppCompatActivity implements CustomSimpleOnPag
   }
 
   private void setupMediaRouter() {
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-      mediaRouter = MediaRouter.getInstance(getApplicationContext());
-      mediaRouteSelector = new MediaRouteSelector.Builder().addControlCategory(
-          CastMediaControlIntent.categoryForCast(getString(R.string.app_cast_id))).build();
-      if (isRemoteDisplaying()) {
-        this.castDevice = CastDevice.getFromBundle(mediaRouter.getSelectedRoute().getExtras());
-      } else {
-        Bundle extras = getIntent().getExtras();
-        if (extras != null) {
-          castDevice = extras.getParcelable(INTENT_EXTRA_CAST_DEVICE);
-        }
+    mediaRouter = MediaRouter.getInstance(getApplicationContext());
+    mediaRouteSelector = new MediaRouteSelector.Builder().addControlCategory(
+        CastMediaControlIntent.categoryForCast(getString(R.string.app_cast_id))).build();
+    if (isRemoteDisplaying()) {
+      this.castDevice = CastDevice.getFromBundle(mediaRouter.getSelectedRoute().getExtras());
+    } else {
+      Bundle extras = getIntent().getExtras();
+      if (extras != null) {
+        castDevice = extras.getParcelable(INTENT_EXTRA_CAST_DEVICE);
       }
-
-      mediaRouter.addCallback(mediaRouteSelector, mMediaRouterCallback,
-          MediaRouter.CALLBACK_FLAG_REQUEST_DISCOVERY);
     }
+
+    mediaRouter.addCallback(mediaRouteSelector, mMediaRouterCallback,
+        MediaRouter.CALLBACK_FLAG_REQUEST_DISCOVERY);
   }
 
   private boolean isRemoteDisplaying() {

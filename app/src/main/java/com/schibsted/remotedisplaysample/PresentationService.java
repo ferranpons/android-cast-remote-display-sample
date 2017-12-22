@@ -9,6 +9,7 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.google.android.gms.cast.CastPresentation;
 import com.google.android.gms.cast.CastRemoteDisplayLocalService;
 
@@ -69,8 +70,11 @@ public class PresentationService extends CastRemoteDisplayLocalService {
       title.setText(adViewModel.getTitle());
       price.setText(adViewModel.getPrice());
       if (!adViewModel.getImage().isEmpty()) {
+        RequestOptions options = new RequestOptions();
+        options.centerCrop();
         Glide.with(getContext())
             .load(adViewModel.getImage())
+            .apply(options)
             .into(image);
       }
     }
