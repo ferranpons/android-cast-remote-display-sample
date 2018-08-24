@@ -67,15 +67,17 @@ public class PresentationService extends CastRemoteDisplayLocalService {
     }
 
     public void updateAdDetail(AdViewModel adViewModel) {
-      title.setText(adViewModel.getTitle());
-      price.setText(adViewModel.getPrice());
-      if (!adViewModel.getImage().isEmpty()) {
-        RequestOptions options = new RequestOptions();
-        options.centerCrop();
-        Glide.with(getContext())
-            .load(adViewModel.getImage())
-            .apply(options)
-            .into(image);
+      if (adViewModel != null) {
+        title.setText(adViewModel.getTitle());
+        price.setText(adViewModel.getPrice());
+        if (!adViewModel.getImage().isEmpty()) {
+          RequestOptions options = new RequestOptions();
+          options.centerCrop();
+          Glide.with(getContext())
+                  .load(adViewModel.getImage())
+                  .apply(options)
+                  .into(image);
+        }
       }
     }
 

@@ -2,25 +2,21 @@ package com.schibsted.remotedisplaysample;
 
 import android.app.PendingIntent;
 import android.content.Intent;
-import android.os.Build;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
-import android.support.v4.view.MenuItemCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.support.v7.app.MediaRouteActionProvider;
 import android.support.v7.media.MediaRouteSelector;
 import android.support.v7.media.MediaRouter;
 import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.widget.Toast;
 import com.google.android.gms.cast.CastDevice;
 import com.google.android.gms.cast.CastMediaControlIntent;
 import com.google.android.gms.cast.CastRemoteDisplayLocalService;
+import com.google.android.gms.cast.framework.CastButtonFactory;
 import com.google.android.gms.common.api.Status;
 import java.util.ArrayList;
 import java.util.List;
@@ -30,7 +26,6 @@ public class MainActivity extends AppCompatActivity implements CustomSimpleOnPag
   private int currentPosition;
   private ScreenSlidePagerAdapter fragmentStatePagerAdapter;
   private MediaRouter mediaRouter;
-  private MediaRouteSelector mediaRouteSelector;
   private CastDevice castDevice;
 
   @Override
@@ -74,25 +69,16 @@ public class MainActivity extends AppCompatActivity implements CustomSimpleOnPag
 
   @Override
   public boolean onCreateOptionsMenu(Menu menu) {
-    MenuInflater inflater = getMenuInflater();
-    inflater.inflate(R.menu.activity_main_actions, menu);
-
-    if (mediaRouteSelector != null) {
-      MenuItem mediaRouteMenuItem = menu.findItem(R.id.action_cast);
-      if (MenuItemCompat.getActionProvider(
-          mediaRouteMenuItem) instanceof MediaRouteActionProvider) {
-        MediaRouteActionProvider mediaRouteActionProvider =
-            (MediaRouteActionProvider) MenuItemCompat.getActionProvider(mediaRouteMenuItem);
-        mediaRouteActionProvider.setRouteSelector(mediaRouteSelector);
-      }
-    }
+    super.onCreateOptionsMenu(menu);
+    getMenuInflater().inflate(R.menu.activity_main_actions, menu);
+    CastButtonFactory.setUpMediaRouteButton(getApplicationContext(), menu, R.id.action_cast);
     return true;
   }
 
   private void setupMediaRouter() {
     mediaRouter = MediaRouter.getInstance(getApplicationContext());
-    mediaRouteSelector = new MediaRouteSelector.Builder().addControlCategory(
-        CastMediaControlIntent.categoryForCast(getString(R.string.app_cast_id))).build();
+    MediaRouteSelector mediaRouteSelector = new MediaRouteSelector.Builder().addControlCategory(
+            CastMediaControlIntent.categoryForCast(getString(R.string.app_cast_id))).build();
     if (isRemoteDisplaying()) {
       this.castDevice = CastDevice.getFromBundle(mediaRouter.getSelectedRoute().getExtras());
     } else {
@@ -157,6 +143,10 @@ public class MainActivity extends AppCompatActivity implements CustomSimpleOnPag
 
             MainActivity.this.castDevice = null;
             MainActivity.this.finish();
+          }
+
+          @Override
+          public void onRemoteDisplaySessionEnded(CastRemoteDisplayLocalService castRemoteDisplayLocalService) {
           }
         });
   }
@@ -230,7 +220,7 @@ public class MainActivity extends AppCompatActivity implements CustomSimpleOnPag
       return ads.size();
     }
 
-    public void addAds(List<AdViewModel> ads) {
+    void addAds(List<AdViewModel> ads) {
       this.ads.addAll(ads);
       notifyDataSetChanged();
     }
