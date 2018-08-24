@@ -6,8 +6,6 @@ import android.view.Display;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
-import butterknife.BindView;
-import butterknife.ButterKnife;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.google.android.gms.cast.CastPresentation;
@@ -50,9 +48,9 @@ public class PresentationService extends CastRemoteDisplayLocalService {
   }
 
   public class DetailPresentation extends CastPresentation {
-    @BindView(R.id.ad_title) public TextView title;
-    @BindView(R.id.ad_price) public TextView price;
-    @BindView(R.id.ad_image) public ImageView image;
+    public TextView title;
+    TextView price;
+    public ImageView image;
 
     public DetailPresentation(Context context, Display display) {
       super(context, display);
@@ -62,22 +60,23 @@ public class PresentationService extends CastRemoteDisplayLocalService {
     protected void onCreate(Bundle savedInstanceState) {
       super.onCreate(savedInstanceState);
       setContentView(R.layout.presentation_detail);
-      ButterKnife.bind(this);
+      title = findViewById(R.id.ad_title);
+      price = findViewById(R.id.ad_price);
+      image = findViewById(R.id.ad_image);
+
       updateAdDetail(adViewModel);
     }
 
     public void updateAdDetail(AdViewModel adViewModel) {
-      if (adViewModel != null) {
-        title.setText(adViewModel.getTitle());
-        price.setText(adViewModel.getPrice());
-        if (!adViewModel.getImage().isEmpty()) {
-          RequestOptions options = new RequestOptions();
-          options.centerCrop();
-          Glide.with(getContext())
-                  .load(adViewModel.getImage())
-                  .apply(options)
-                  .into(image);
-        }
+      title.setText(adViewModel.getTitle());
+      price.setText(adViewModel.getPrice());
+      if (!adViewModel.getImage().isEmpty()) {
+        RequestOptions options = new RequestOptions();
+        options.centerCrop();
+        Glide.with(getContext())
+            .load(adViewModel.getImage())
+            .apply(options)
+            .into(image);
       }
     }
 
