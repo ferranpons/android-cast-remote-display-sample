@@ -8,5 +8,8 @@ build/
 .idea/copyright/
 .idea/dictionaries/
 .idea/.name
+.idea
 .DS_Store
 /captures
+app/src/debug/
+app/src/debug/*.xml
