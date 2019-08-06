@@ -212,7 +212,7 @@ public class MainActivity extends AppCompatActivity implements CustomSimpleOnPag
 
     @Override
     public Fragment getItem(int position) {
-      return DetailFragment.newInstance(ads.get(position));
+      return DetailFragment.Companion.newInstance(ads.get(position));
     }
 
     @Override

@@ -1,5 +1,6 @@
 package com.schibsted.remotedisplaysample
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
 import android.view.Display
@@ -20,7 +21,7 @@ class PresentationService : CastRemoteDisplayLocalService() {
         castPresentation = DetailPresentation(this, display)
 
         try {
-            castPresentation!!.show()
+            castPresentation?.show()
         } catch (ex: WindowManager.InvalidDisplayException) {
             dismissPresentation()
         }
@@ -33,17 +34,15 @@ class PresentationService : CastRemoteDisplayLocalService() {
     }
 
     private fun dismissPresentation() {
-        if (castPresentation != null) {
-            castPresentation!!.dismiss()
+        castPresentation?.let {
+            it.dismiss()
             castPresentation = null
         }
     }
 
     fun setAdViewModel(ad: AdViewModel) {
         adViewModel = ad
-        if (castPresentation != null) {
-            castPresentation!!.updateAdDetail(ad)
-        }
+        castPresentation?.updateAdDetail(ad)
     }
 
     inner class DetailPresentation(context: Context, display: Display) : CastPresentation(context, display) {
@@ -61,16 +60,22 @@ class PresentationService : CastRemoteDisplayLocalService() {
             updateAdDetail(adViewModel)
         }
 
+        @SuppressLint("CheckResult")
         fun updateAdDetail(adViewModel: AdViewModel?) {
-            title.text = adViewModel!!.title
-            price.text = adViewModel.price
-            if (!adViewModel.image.isEmpty()) {
-                val options = RequestOptions()
-                options.centerCrop()
-                Glide.with(context)
-                        .load(adViewModel.image)
-                        .apply(options)
-                        .into(image)
+            adViewModel?.let {
+                title.text = it.title
+                price.text = it.price
+                it.image?.let { imageUrl ->
+
+                    if (imageUrl.isNotEmpty()) {
+                        val options = RequestOptions()
+                        options.centerCrop()
+                        Glide.with(context)
+                                .load(it.image)
+                                .apply(options)
+                                .into(image)
+                    }
+                }
             }
         }
     }
