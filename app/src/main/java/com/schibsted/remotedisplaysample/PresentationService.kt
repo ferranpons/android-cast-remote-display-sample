@@ -22,7 +22,7 @@ class PresentationService : CastRemoteDisplayLocalService() {
 
         try {
             castPresentation?.show()
-        } catch (ex: WindowManager.InvalidDisplayException) {
+        } catch (ex: Throwable) {
             dismissPresentation()
         }
 
